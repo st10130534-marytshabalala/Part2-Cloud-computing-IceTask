@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhumaloCraft Emporium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Artisan Products</h1>
+
+    <h2>All Products</h2>
+    <ul>
+        @foreach (var product in Model.Products)
+        {
+            <li>
+                <strong>@product.Name</strong><br />
+                Description: @product.Description<br />
+                Price: @product.Price<br />
+                Artisan: @product.Artisan.Name
+            </li>
+        }
+    </ul>
+
+    <h2>Artisan Products</h2>
+    <ul>
+        @foreach (var artisan in Model.Artisans)
+        {
+            <li>
+                <strong>@artisan.Name</strong><br />
+                Products:
+                <ul>
+               @foreach (var product in Model.Products)
+            {
+             if (product.Artisan == artisan)
+             {
+             <li>@product.Name</li>
+             }
+              }
+            </ul>  
+            </li>
+        }
+    </ul>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
